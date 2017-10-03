@@ -2,7 +2,6 @@ from django.shortcuts import redirect
 from django.core.urlresolvers import reverse
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from . import models
 from postmarker.core import PostmarkClient
@@ -18,7 +17,7 @@ class SignUpView(CreateView):
     form_class = UserCreationForm
 
 
-class IndexView(LoginRequiredMixin, TemplateView):
+class IndexView(TemplateView):
     template_name = "index.html"
 
 
@@ -26,7 +25,7 @@ class IndexView(LoginRequiredMixin, TemplateView):
 #     template_name = "join-us.html"
 
 
-class YourrequirementsView(LoginRequiredMixin, TemplateView):
+class YourrequirementsView(TemplateView):
     template_name = "your-requirements.html"
 
 
