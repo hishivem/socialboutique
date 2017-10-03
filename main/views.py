@@ -8,6 +8,7 @@ from postmarker.core import PostmarkClient
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.messages import add_message
 from django.core.mail import send_mail
+from django.contrib import messages
 
 
 class SignUpView(CreateView):
@@ -41,12 +42,12 @@ class JoinusView(CreateView):
         send_mail(
             'Join Us [Social Boutique]',
             msg,
-            'shivem05tiwari@gmail.com',
+            'hi@socialboutique.in',
             [user.email for user in User.objects.filter(is_superuser=True)],
             fail_silently=False,
         )
         form.save()
-        add_message(self.request, 25, "Response Recorded Successfully!")
+
         return super(JoinusView, self).form_valid(form)
 
     def form_invalid(self, form):
@@ -55,18 +56,18 @@ class JoinusView(CreateView):
 
 
 class YourrequirementsView(CreateView):
-    template_name = "Your-requirements.html"
+    template_name = "your-requirements.html"
     model = models.Yourrequirements
-    fields = ("name", "email", "message")
+    fields = ("name", "email", "message", "mobile")
     success_url = '/your-requirements'
 
     def form_valid(self, form):
-        msg = "Hello Admins,\n\nCongrates!! %s is interested to join us. To follow up please " \
+        msg = "Hello Admins,\n\nCongrates!! %s is interested to connect. To follow up please " \
               "contact %s.\n\n Thanks,\n-Social Boutique Team" % (form.cleaned_data["name"], form.cleaned_data['email'])
         send_mail(
-            'Join Us [Social Boutique]',
+            'Leads [Social Boutique]',
             msg,
-            'shivem05tiwari@gmail.com',
+            'hi@socialboutique.in',
             [user.email for user in User.objects.filter(is_superuser=True)],
             fail_silently=False,
         )
@@ -76,11 +77,11 @@ class YourrequirementsView(CreateView):
         for id in requirement_ids:
             obj.requirements.add(models.Requirement.objects.filter(id=id).first())
 
-        add_message(self.request, 25, "Response Recorded Successfully!")
+        messages.success(self.request, 'Thank You!')
         return super(YourrequirementsView, self).form_valid(form)
 
     def form_invalid(self, form):
-        add_message(self.request, 25, "Form is invalid! Please try again.")
+        messages.error(self.request, 'Form is invalid please try again!')
         return super(YourrequirementsView, self).form_invalid(form)
 
     def get_requirements(self):

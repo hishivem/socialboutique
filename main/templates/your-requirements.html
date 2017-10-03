@@ -74,7 +74,7 @@
     <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent " color-on-scroll="400">
         <div class="container">
             <div class="navbar-translate">
-                <a class="navbar-brand" href="/index" rel="tooltip" data-placement="bottom">
+                <a class="navbar-brand" href="/" rel="tooltip" data-placement="bottom">
                    <img src="{% static 'assets/img/logo-white.png' %}" />
                 </a>
                 <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
@@ -169,7 +169,6 @@
                                             <i class="now-ui-icons design-2_ruler-pencil"></i>
                                         </span>
                                             <textarea class="form-control" name="message" placeholder="Here can be your nice text" rows="5"></textarea>
-
                                         </div>
                                         <h4 class="text-left">Tick the services you are looking for...
                                         </h4>
@@ -187,16 +186,16 @@
                                     <div class="footer text-center">
                                         <button href="" type="submit" class="btn btn-primary btn-round btn-lg btn-block">Send request</button>
                                     </div>
-                                    <div class="pull-left">
-                                        <h6>
-                                            <a href="#" class="link">Join Our Team</a>
-                                        </h6>
-                                    </div>
-                                    <div class="pull-right">
-                                        <h6>
-                                            <a href="#" class="link">Need Help?</a>
-                                        </h6>
-                                    </div>
+{#                                    <div class="pull-left">#}
+{#                                        <h6>#}
+{#                                            <a href="#" class="link">Join Our Team</a>#}
+{#                                        </h6>#}
+{#                                    </div>#}
+{#                                    <div class="pull-right">#}
+{#                                        <h6>#}
+{#                                            <a href="#" class="link">Need Help?</a>#}
+{#                                        </h6>#}
+{#                                    </div>#}
                                 </form>
                             </div>
                         </div>
@@ -295,7 +294,12 @@
 <script src="{% static 'assets/js/now-ui-kit.js' %}" type="text/javascript"></script>
 <script type="text/javascript">
     $(document).ready(function() {
-        // the body of this function is in assets/js/now-ui-kit.js
+        {% if messages %}
+            debugger;
+            {% for message in messages %}
+                alert("{{ message }}");
+            {% endfor %}
+        {% endif %}
         nowuiKit.initSliders();
     });
 

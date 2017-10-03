@@ -19,6 +19,7 @@ class Yourrequirements(models.Model):
     name = models.CharField(max_length=80, null=True, blank=False)
     email = models.EmailField(null=True, blank=False)
     message = models.CharField(max_length=180, null=True, blank=False)
+    mobile = models.CharField(max_length=11, null=True, blank=False)
     requirements = models.ManyToManyField("Requirement")
 
     def __str__(self):

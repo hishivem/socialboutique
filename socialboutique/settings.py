@@ -145,7 +145,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 
 EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = 'smtp.zoho.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = "shivem05tiwari@gmail.com"
-EMAIL_HOST_PASSWORD = 'shivam19970519'
+EMAIL_HOST_USER = "hi@socialboutique.in"
+EMAIL_HOST_PASSWORD = '$ocialb0utique'
