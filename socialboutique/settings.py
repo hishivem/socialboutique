@@ -25,7 +25,11 @@ SECRET_KEY = 'gepoqxf$g7)*1t+22d5lx)=z#((ybetzq!zzaixclo4@e6_$fr'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    'socailboutique.in',
+    '*'
+]
 
 
 # Application definition
